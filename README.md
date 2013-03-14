@@ -18,8 +18,7 @@ It sets the hexadecimal block length and must be a number
 between 1-1024. The default is 1.
 
 The **:length** option is the number of random numbers  
-to be returned. It must be a number between 1-1024.  
-The default is 1.
+to be returned. The default is 1.
 
 If option **:https** is true, the connection will be  
 made using the https protocol. Note, however, that at  
@@ -31,28 +30,32 @@ default for this option is false (i.e., http).
 (require '[naipmoro.qrng.core :as qrng])
 
 ;one random integer between 0-255  
-(qrng/qurand)  
+(qrng/qrand)  
 => [110]
 
 ;6 random integers between 0-255  
-(qrng/qurand :length 6)  
+(qrng/qrand :length 6)  
 => [67 225 141 118 46 102]
 
 ;4 random integers between 0-65535  
-(qrng/qurand :length 4 :type :int16)  
+(qrng/qrand :length 4 :type :int16)  
 => [24861 25422 60585 58192]
 
 ;6 random hexadecimals  
-(qrng/qurand :length 6 :type :hex16)  
+(qrng/qrand :length 6 :type :hex16)  
 => ["f8" "45" "3b" "78" "06" "20"]
 
-;5 blocks of hexadecimals of block-size 2  
-(qrng/qurand :length 5 :type :hex16 :blocks 2)  
+;5 blocks of hexadecimals of block-size 2 (0000-ffff)  
+(qrng/qrand :length 5 :type :hex16 :blocks 2)  
 => ["07cb" "fcc6" "411b" "2780" "3a99"]
 
 ;connect to server using the https protocol  
-(qrng/qurand :length 5 :type :hex16 :size 2 :https true)  
+(qrng/qrand :length 5 :type :hex16 :size 2 :https true)  
 => ["d34d" "7b40" "8c35" "3693" "fb2c"]
+
+The actual ANU API restricts the maximum length of the returned  
+vector to 1024. For any length greater than that, a connection pool  
+is used to reduce execution time.
 
 ### License
 

@@ -25,8 +25,7 @@
    must be a number between 1-1024. The default is 1.
 
    The 'length' option is the number of random numbers
-   to be returned. It must be a number between 1-1024.
-   The default is 1.
+   to be returned. The default is 1.
 
    If option 'https' is true, the connection will be
    made using the https protocol. Note, however, that at

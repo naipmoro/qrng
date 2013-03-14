@@ -8,11 +8,11 @@ the quantum fluctuations of the vacuum.
 
 (qrand & opts)
 
-You have 3 choices of option *:type*:
--:int8  (an integer between 0-255, the default)  
--:int16  (an integer between 0-65535)
--:hex16  (a hexadecimal string between "00"-"ff")
-
+You have 3 choices of option **:type**:  
+*:int8  (an integer between 0-255, the default)  
+*:int16  (an integer between 0-65535)  
+*:hex16  (a hexadecimal string between "00"-"ff")  
+  
 The *:blocks* option is relevant only for type
 :hex16. It sets the hexadecimal block length and
 must be a number between 1-1024. The default is 1.

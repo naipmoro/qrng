@@ -53,9 +53,14 @@ default for this option is false (i.e., http).
 (qrng/qrand :length 5 :type :hex16 :size 2 :https true)  
 => ["d34d" "7b40" "8c35" "3693" "fb2c"]
 
+;a random stream of 2024 hex characters  
+(qrng/qrand :length 1 :type :hex16 :blocks 1012)  
+=> ["554681a2c8a6...[snipped 2000 characters]...16faddb80522"]
+
 The actual ANU API restricts the maximum length of the returned  
-vector to 1024. For any length greater than that, a connection pool  
-is used to reduce execution time.
+vector to 1024. We bypass that restriction by using a connection  
+pool to repeatedly execute the function while maintaining  
+performance.
 
 ### License
 

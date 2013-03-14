@@ -36,7 +36,8 @@
            length 1         ; the defaults
            blocks 1         ; 
            https  false}}]  ;
-  {:pre [(pos? length) (pos? blocks)]} ; length & blocks must be > 0
+  {:pre [(pos? length)                        ; length > 0
+         (and (> blocks 0) (< blocks 1025))]} ; 0 < blocks <= 1025
   (let [protocol (if https "https" "http")
         url (str protocol "://" anu-domain)
         base-query {"type" (type types) "size" blocks}

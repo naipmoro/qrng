@@ -28,16 +28,16 @@
    to be returned. The default is 1.
 
    If option 'https' is true, the connection will be
-   made using the https protocol. Note, however, that at
-   present the ANU server has an untrusted SSL cert. The
-   default for this option is false (i.e., http)."
+   established using the https protocol. Note, however,
+   that presently the ANU server has an untrusted SSL cert.
+   The default for this option is false (i.e., http)."
   [& {:keys [type length blocks https]
       :or {type   :int8     ; 
            length 1         ; the defaults
            blocks 1         ; 
            https  false}}]  ;
   {:pre [(pos? length)                        ; length > 0
-         (and (> blocks 0) (< blocks 1025))]} ; 0 < blocks <= 1025
+         (and (> blocks 0) (< blocks 1025))]} ; 0 < blocks <= 1024
   (let [protocol (if https "https" "http")
         url (str protocol "://" anu-domain)
         base-query {"type" (type types) "size" blocks}

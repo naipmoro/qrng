@@ -82,7 +82,7 @@ A string of 2024 random hex characters:
 
 The actual ANU API restricts the maximum length of the returned  
 vector to 1024. We bypass that restriction by using a connection  
-pool to repeatedly execute the _get_ function while maintaining  
+pool to repeatedly execute the `get` function while maintaining  
 performance.
 
 ### License

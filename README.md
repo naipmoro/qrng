@@ -29,8 +29,7 @@ The default for this option is false (i.e., http).
 
     (require '[naipmoro.qrng.core :as qrng])
 
-one random integer between 0-255 :
-  
+one random integer between 0-255:
     (qrng/qrand)  
     => [110]
 

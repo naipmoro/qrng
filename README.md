@@ -23,7 +23,7 @@ to be returned. The default is 1.
 If option **:https** is true, the connection will be  
 established using the https protocol. Note, however,  
 that presently the ANU server has an untrusted SSL cert.  
-The default for this option is false (i.e., http).
+The default is false (i.e., http is used).
 
 ### Examples
 

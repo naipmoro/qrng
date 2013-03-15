@@ -27,7 +27,9 @@ The default for this option is false (i.e., http).
 
 ### Examples
 
+    ```clj
     (require '[naipmoro.qrng.core :as qrng])
+    ```
 
 One random integer between 0-255:  
 

@@ -29,25 +29,30 @@ The default for this option is false (i.e., http).
 
     (require '[naipmoro.qrng.core :as qrng])
 
-one random integer between 0-255:
+one random integer between 0-255  
+
     (qrng/qrand)  
     => [110]
 
-; 6 random integers between 0-255  
-(qrng/qrand :length 6)  
-=> [67 225 141 118 46 102]
+6 random integers between 0-255:  
 
-; 4 random integers between 0-65535  
-(qrng/qrand :length 4 :type :int16)  
-=> [24861 25422 60585 58192]
+    (qrng/qrand :length 6)  
+    => [67 225 141 118 46 102]
 
-; 6 random hexadecimals (00-ff)  
-(qrng/qrand :length 6 :type :hex16)  
-=> ["f8" "45" "3b" "78" "06" "20"]
+4 random integers between 0-65535:
+  
+    (qrng/qrand :length 4 :type :int16)  
+    => [24861 25422 60585 58192]
 
-; 5 hexadecimal blocks of size 2 (0000-ffff)  
-(qrng/qrand :length 5 :type :hex16 :blocks 2)  
-=> ["07cb" "fcc6" "411b" "2780" "3a99"]
+6 random hexadecimals (00-ff) :
+ 
+    (qrng/qrand :length 6 :type :hex16)  
+    => ["f8" "45" "3b" "78" "06" "20"]
+
+5 hexadecimal blocks of size 2 (0000-ffff) :  
+  
+    (qrng/qrand :length 5 :type :hex16 :blocks 2)  
+    => ["07cb" "fcc6" "411b" "2780" "3a99"]
 
 ; connect to server using the https protocol  
 (qrng/qrand :length 5 :type :hex16 :blocks 2 :https true)  

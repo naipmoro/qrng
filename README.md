@@ -33,38 +33,52 @@ The default for this option is false (i.e., http).
 
 One random integer between 0-255:  
 
-    (qrng/qrand)  
-    => [110]
+```clj
+(qrng/qrand)  
+=> [110]
+```
 
 6 random integers between 0-255:  
  
-    (qrng/qrand :length 6)  
-    => [67 225 141 118 46 102]
+```clj
+(qrng/qrand :length 6)  
+=> [67 225 141 118 46 102]
+```
 
 4 random integers between 0-65535:  
-  
-    (qrng/qrand :length 4 :type :int16)  
-    => [24861 25422 60585 58192]
+
+```clj  
+(qrng/qrand :length 4 :type :int16)  
+=> [24861 25422 60585 58192]
+```
 
 6 random hexadecimal strings (00-ff):  
-  
-    (qrng/qrand :length 6 :type :hex16)  
-    => ["f8" "45" "3b" "78" "06" "20"]
+
+```clj  
+(qrng/qrand :length 6 :type :hex16)  
+=> ["f8" "45" "3b" "78" "06" "20"]
+```
 
 5 hexadecimal blocks of size 2 (0000-ffff):  
   
-    (qrng/qrand :length 5 :type :hex16 :blocks 2)  
-    => ["07cb" "fcc6" "411b" "2780" "3a99"]
+```clj
+(qrng/qrand :length 5 :type :hex16 :blocks 2)  
+=> ["07cb" "fcc6" "411b" "2780" "3a99"]
+```
 
 Connect to server using the https protocol:  
 
-    (qrng/qrand :length 5 :type :hex16 :blocks 2 :https true)  
-    => ["d34d" "7b40" "8c35" "3693" "fb2c"]
+```clj
+(qrng/qrand :length 5 :type :hex16 :blocks 2 :https true)  
+=> ["d34d" "7b40" "8c35" "3693" "fb2c"]
+```
 
 A string of 2024 random hex characters:  
 
-    (qrng/qrand :length 1 :type :hex16 :blocks 1012)  
-    => ["554681a2c8a6...[snipped 2000 characters]...16faddb80522"]
+```clj
+(qrng/qrand :length 1 :type :hex16 :blocks 1012)  
+=> ["554681a2c8a6...[snipped 2000 characters]...16faddb80522"]
+```
 
 The actual ANU API restricts the maximum length of the returned  
 vector to 1024. We bypass that restriction by using a connection  

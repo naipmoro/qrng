@@ -1,7 +1,6 @@
 (ns naipmoro.qrng.core
-  (:require [clj-http.client :as http])
-  (:require [criterium.core :as crit])
-  )
+  (:require [clj-http.client :as http]))
+
 (set! *warn-on-reflection* true)
 
 (def anu-domain "qrng.anu.edu.au/API/jsonI.php")
@@ -21,7 +20,7 @@
    :hex16 a hexadecimal string between 00-ff
 
    The ':blocks' option is relevant only for type
-   :hex16. It sets the hexadecimal block length and
+   :hex16. It sets the hexadecimal block size and
    must be a number between 1-1024. The default is 1.
 
    The ':length' option is the number of random numbers
@@ -46,15 +45,24 @@
       (let [query-opts {:query-params (assoc base-query "length" maxlen)}
             opts (conj base-get query-opts)]
         (http/with-connection-pool {:insecure? true}
-          (let [[q r] (quot-rem length maxlen)]
-            (loop [q q, res []]
-              (if (zero? q)
-                (if (zero? r)
-                  (vec res)
-                  (vec (concat res (take r (:data (:body (http/get url opts)))))))
-                (recur (dec q) (concat res (:data (:body (http/get url opts))))))))))
-      ; elseif length <= maxlen
+          (let [[q r] (quot-rem length maxlen), v (atom [])]
+            (dotimes [_ q] (swap! v concat (:data (:body (http/get url opts)))))
+            (when (> r 0)
+              (swap! v concat (take r (:data (:body (http/get url opts)))))) 
+            (vec (deref v)))))
+                                        ; elseif length <= maxlen
       (let [query-opts {:query-params (assoc base-query "length" length)}
             get-opts (if-not https base-get (assoc base-get :insecure? true))
             opts (conj get-opts query-opts)]
         (:data (:body (http/get url opts)))))))
+
+(defn- least-significant-bit
+  "Returns the least significant bit from a hexadecimal byte string" 
+  [hex-str]
+  (rem (Integer/parseInt hex-str 16) 2))
+
+(defn qrand-bin
+  "Returns a lazy sequence of n random bits"
+  [n]
+  (map least-significant-bit (qrand :type :hex16 :length n)))
+

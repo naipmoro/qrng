@@ -14,7 +14,7 @@ You have 3 choices for option **:type**:
 * __:hex16__   (a hexadecimal string between 00-ff)  
   
 The **:blocks** option is relevant only for type :hex16.  
-It sets the hexadecimal block length and must be a number  
+It sets the hexadecimal block size and must be a number  
 between 1-1024. The default is 1.
 
 The **:length** option is the number of random numbers  
@@ -48,42 +48,41 @@ One random integer between 0-255:
 4 random integers between 0-65535:  
 
 ```clj  
-(qrng/qrand :length 4 :type :int16)  
+(qrng/qrand :length 4, :type :int16)  
 => [24861 25422 60585 58192]
 ```
 
 6 random hexadecimal strings (00-ff):  
 
 ```clj  
-(qrng/qrand :length 6 :type :hex16)  
+(qrng/qrand :length 6, :type :hex16)  
 => ["f8" "45" "3b" "78" "06" "20"]
 ```
 
 5 hexadecimal blocks of size 2 (0000-ffff):  
   
 ```clj
-(qrng/qrand :length 5 :type :hex16 :blocks 2)  
+(qrng/qrand :length 5, :type :hex16, :blocks 2)  
 => ["07cb" "fcc6" "411b" "2780" "3a99"]
 ```
 
 Connect to server using the https protocol:  
 
 ```clj
-(qrng/qrand :length 5 :type :hex16 :blocks 2 :https true)  
+(qrng/qrand :length 5, :type :hex16, :blocks 2, :https true)  
 => ["d34d" "7b40" "8c35" "3693" "fb2c"]
 ```
 
-A string of 2024 random hex characters:  
+1024 bytes of random hexadecimals:  
 
 ```clj
-(qrng/qrand :length 1 :type :hex16 :blocks 1012)  
-=> ["554681a2c8a6...[snipped 2000 characters]...16faddb80522"]
+(qrng/qrand  :type :hex16, :blocks 1024)  
+=> ["554681a2c8a6<<snipped 2024 characters>>16faddb80522"]
 ```
+### Acknowledgments
 
-The actual ANU API restricts the maximum length of the returned  
-vector to 1024. We bypass that restriction by using a connection  
-pool to repeatedly execute the `get` function while maintaining  
-performance.
+Thanks to the folks at **qrng.anu.edu.au** for allowing the public  
+free access to their random number generator.
 
 ### License
 

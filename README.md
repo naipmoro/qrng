@@ -25,7 +25,7 @@ Available from [Clojars:](https://clojars.org/naipmoro/qrng)
 
 ### Usage
 
-`(qrand & opts)`
+**(qrand & opts)**
 
 You have 3 choices for option **:type**:  
 * __:int8__   (an integer between 0-255; the default)  
@@ -105,7 +105,7 @@ Connect to server using the https protocol:
 => ["554681a2c8a6<..snipped 2024 characters..>16faddb80522"]
 ```
 
-Of course, the `**qrand**` function can be used to create random streams of other  
+Of course, the **qrand** function can be used to create random streams of other  
 types. For example:
 
 ```clj

@@ -8,14 +8,14 @@ quantum fluctuations of the vacuum.
 
 Available from [Clojars:](https://clojars.org/naipmoro/qrng)  
 
-*Leiningen*  
+**Leiningen**  
 
 ```clj
 [naipmoro/qrng "0.2.0"]
 ```
-*Maven*  
+**Maven**  
 
-```clj
+```xml
 <dependency>
   <groupId>naipmoro</groupId>
   <artifactId>qrng</artifactId>

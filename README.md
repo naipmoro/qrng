@@ -6,14 +6,14 @@ quantum fluctuations of the vacuum.
 
 ### Installation
 
-Available from [Clojars:](https://clojars.org/naipmoro/qrng)
+Available from [Clojars:](https://clojars.org/naipmoro/qrng)  
 
-- **Leiningen**
+*Leiningen*  
 
 ```clj
 [naipmoro/qrng "0.2.0"]
 ```
-- **Maven**
+*Maven*  
 
 ```clj
 <dependency>

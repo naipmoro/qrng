@@ -4,6 +4,25 @@ Random number generation via the [ANU Quantum Random Numbers Server](http://qrng
 These are purportedly 'truly random' numbers, based on measuring the  
 quantum fluctuations of the vacuum.
 
+### Installation
+
+Available from [Clojars:](https://clojars.org/naipmoro/qrng)
+
+#### Leiningen
+
+```clj
+[naipmoro/qrng "0.2.0"]
+```
+#### Maven
+
+```clj
+<dependency>
+  <groupId>naipmoro</groupId>
+  <artifactId>qrng</artifactId>
+  <version>0.2.0</version>
+</dependency>
+```
+
 ### Usage
 
 **(qrand & opts)**

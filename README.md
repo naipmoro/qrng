@@ -83,7 +83,7 @@ Connect to server using the https protocol:
 
 ```clj
 (qrand  :type :hex16, :blocks 1024)  
-=> ["554681a2c8a6..<snipped 2024 characters>..16faddb80522"]
+=> ["554681a2c8a6<..snipped 2024 characters..>16faddb80522"]
 ```
 
 The **qrand** function can be used to create random streams  

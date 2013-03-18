@@ -28,55 +28,55 @@ The default is false (i.e., http is used).
 ### Examples
 
 ```clj
-(require '[naipmoro.qrng.core :as qrng])
+(require '[naipmoro.qrng.core :refer [qrand])
 ```
 
 One random integer between 0-255:  
 
 ```clj
-(qrng/qrand)  
+(qrand)  
 => [110]
 ```
 
 6 random integers between 0-255:  
  
 ```clj
-(qrng/qrand :length 6)  
+(qrand :length 6)  
 => [67 225 141 118 46 102]
 ```
 
 4 random integers between 0-65535:  
 
 ```clj  
-(qrng/qrand :length 4, :type :int16)  
+(qrand :length 4, :type :int16)  
 => [24861 25422 60585 58192]
 ```
 
 6 random hexadecimal strings (00-ff):  
 
 ```clj  
-(qrng/qrand :length 6, :type :hex16)  
+(qrand :length 6, :type :hex16)  
 => ["f8" "45" "3b" "78" "06" "20"]
 ```
 
 5 hexadecimal blocks of size 2 (0000-ffff):  
   
 ```clj
-(qrng/qrand :length 5, :type :hex16, :blocks 2)  
+(qrand :length 5, :type :hex16, :blocks 2)  
 => ["07cb" "fcc6" "411b" "2780" "3a99"]
 ```
 
 Connect to server using the https protocol:  
 
 ```clj
-(qrng/qrand :length 5, :type :hex16, :blocks 2, :https true)  
+(qrand :length 5, :type :hex16, :blocks 2, :https true)  
 => ["d34d" "7b40" "8c35" "3693" "fb2c"]
 ```
 
 1024 bytes of random hexadecimals:  
 
 ```clj
-(qrng/qrand  :type :hex16, :blocks 1024)  
+(qrand  :type :hex16, :blocks 1024)  
 => ["554681a2c8a6..<snipped 2024 characters>..16faddb80522"]
 ```
 
@@ -87,7 +87,7 @@ of other types. For example:
 (defn qrand-bin
   "Returns a lazy sequence of n random bits"
   [n]
-  (map #(rem % 2) (qrng/qrand :length n)))
+  (map #(rem % 2) (qrand :length n)))
 
 (qrand-bin 10)
 => (1 0 0 1 0 1 1 1 0 1)

@@ -105,8 +105,8 @@ Connect to server using the https protocol:
 => ["554681a2c8a6<..snipped 2024 characters..>16faddb80522"]
 ```
 
-The **qrand** function can be used to create random streams  
-of other types. For example:
+Of course, the **qrand** function can be used to create random streams of other  
+types. For example:
 
 ```clj
 (defn qrand-bin
@@ -120,8 +120,8 @@ of other types. For example:
 
 ### Acknowledgments
 
-Thanks to the folks at **qrng.anu.edu.au** for allowing the public  
-free access to their random number generator.
+Thanks to the folks at **qrng.anu.edu.au** for allowing the public free access  
+to their random number generator.
 
 ### License
 

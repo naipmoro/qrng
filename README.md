@@ -27,16 +27,16 @@ Available from [Clojars:](https://clojars.org/naipmoro/qrng)
 
 **(qrand & opts)**
 
-You have 3 choices for option **:type**:  
-* __:int8__   (an integer between 0-255; the default)  
-* __:int16__   (an integer between 0-65535)  
-* __:hex16__   (a hexadecimal string between 00-ff)  
-  
-The **:blocks** option is relevant only for type :hex16. It sets the  
-hexadecimal block size and must be a number between 1-1024. The default   
-is 1.
-
 The **:length** option is the number of random numbers to be returned.  
+The default is 1.
+
+You have 3 choices for option **:type**:  
+ __:int8__   (an integer between 0-255; the default)  
+__:int16__   (an integer between 0-65535)  
+__:hex16__   (a hexadecimal string between 00-ff)  
+  
+The **:blocks** option is relevant only for type :hex16. It sets  
+the hexadecimal block size and must be a number between 1-1024.  
 The default is 1.
 
 If option **:https** is true, the connection will be established using  

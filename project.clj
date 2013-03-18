@@ -11,5 +11,4 @@
              :1.3 {:dependencies [[org.clojure/clojure "1.3.0"]]}
              :1.4 {:dependencies [[org.clojure/clojure "1.4.0"]]}}
   :min-lein-version "2.0.0"
-  :warn-on-reflection true
-  :jar-name "naipmoro-qrng-0.2.0.jar")
+  :warn-on-reflection true)

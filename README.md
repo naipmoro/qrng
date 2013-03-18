@@ -13,17 +13,23 @@ You have 3 choices for option **:type**:
 * __:int16__   (an integer between 0-65535)  
 * __:hex16__   (a hexadecimal string between 00-ff)  
   
-The **:blocks** option is relevant only for type :hex16.  
-It sets the hexadecimal block size and must be a number  
-between 1-1024. The default is 1.
+The **:blocks** option is relevant only for type :hex16. It sets the  
+hexadecimal block size and must be a number between 1-1024. The default   
+is 1.
 
-The **:length** option is the number of random numbers  
-to be returned. The default is 1.
+The **:length** option is the number of random numbers to be returned.  
+The default is 1.
 
-If option **:https** is true, the connection will be  
-established using the https protocol. Note, however,  
-that presently the ANU server has an untrusted SSL cert.  
-The default is false (i.e., http is used).
+If option **:https** is true, the connection will be established using  
+the https protocol. Note, however, that presently the ANU server has  
+an untrusted SSL cert. The default is false (http is used).
+
+NOTE:  
+If the requested vector is larger than the server's maximum (1024),  
+repeated requests need to be made. A connection pool is used in the  
+hope of increasing throughput. Unfortunately, actual experience  
+shows no improvement. Perhaps the ANU server disallows persistent  
+connections -- or something else is going on.
 
 ### Examples
 

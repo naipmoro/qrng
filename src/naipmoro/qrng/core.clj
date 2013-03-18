@@ -50,19 +50,9 @@
             (when (> r 0)
               (swap! v concat (take r (:data (:body (http/get url opts)))))) 
             (vec (deref v)))))
-                                        ; elseif length <= maxlen
+       ; elseif length <= maxlen
       (let [query-opts {:query-params (assoc base-query "length" length)}
             get-opts (if-not https base-get (assoc base-get :insecure? true))
             opts (conj get-opts query-opts)]
         (:data (:body (http/get url opts)))))))
-
-(defn- least-significant-bit
-  "Returns the least significant bit from a hexadecimal byte string" 
-  [hex-str]
-  (rem (Integer/parseInt hex-str 16) 2))
-
-(defn qrand-bin
-  "Returns a lazy sequence of n random bits"
-  [n]
-  (map least-significant-bit (qrand :type :hex16 :length n)))
 

@@ -77,8 +77,22 @@ Connect to server using the https protocol:
 
 ```clj
 (qrng/qrand  :type :hex16, :blocks 1024)  
-=> ["554681a2c8a6<<snipped 2024 characters>>16faddb80522"]
+=> ["554681a2c8a6..<snipped 2024 characters>..16faddb80522"]
 ```
+
+The **qrand** function can be used to create random streams  
+of other types. For example:
+
+```clj
+(defn qrand-bin
+  "Returns a lazy sequence of n random bits"
+  [n]
+  (map #(rem % 2) (qrng/qrand :length n)))
+
+(qrand-bin 10)
+=> (1 0 0 1 0 1 1 1 0 1)
+```
+
 ### Acknowledgments
 
 Thanks to the folks at **qrng.anu.edu.au** for allowing the public  

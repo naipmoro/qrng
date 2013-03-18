@@ -1,8 +1,6 @@
 (ns naipmoro.qrng.core
   (:require [clj-http.client :as http]))
 
-(set! *warn-on-reflection* true)
-
 (def anu-domain "qrng.anu.edu.au/API/jsonI.php")
 (def ^:const maxlen 1024) ; determined by the ANU server
 (def types {:int8 "uint8", :int16 "uint16", :hex16 "hex16"})

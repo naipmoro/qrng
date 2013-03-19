@@ -1,8 +1,8 @@
 ## qrng
 
-A clojure library to generate random numbers via the [ANU Quantum Random Numbers Server](http://qrng.anu.edu.au/index.php).  
-The results are purportedly 'truly random,' based on measuring the quantum fluctuations  
-of the vacuum.
+A clojure interface to the [ANU Quantum Random Numbers Server](http://qrng.anu.edu.au/index.php).  
+The numbers generated are purportedly 'truly random,' based on  
+measuring the quantum fluctuations of the vacuum.
 
 ## Installation
 

@@ -44,37 +44,37 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (fact 
- (let [h (qrand)]
-   h => (has every? #(and (>= % 0) (< % 256)))
-   h => #(= 1 (count %))))
+ (let [v (qrand)]
+   v => (has every? #(and (>= % 0) (< % 256)))
+   v => #(= 1 (count %))))
 
 (fact 
- (let [h (qrand :length 5)]
-   h => (has every? #(and (>= % 0) (< % 256)))
-   h => #(= 5 (count %))))
+ (let [v (qrand :length 5)]
+   v => (has every? #(and (>= % 0) (< % 256)))
+   v => #(= 5 (count %))))
 
 (fact 
- (let [h (qrand :length 8 :type :int16)]
-   h => (has every? #(and (>= % 0) (< % 65536)))
-   h => #(= 8 (count %))))
+ (let [v (qrand :length 8 :type :int16)]
+   v => (has every? #(and (>= % 0) (< % 65536)))
+   v => #(= 8 (count %))))
 
 (fact 
- (let [h (qrand :type :hex16)]
-   h => (has every? hex16?)
-   h => #(= 1 (count %))))
+ (let [v (qrand :type :hex16)]
+   v => (has every? hex16?)
+   v => #(= 1 (count %))))
 
 (fact 
- (let [h (qrand :type :hex16 :length 11)]
-   h => (has every? hex16?)
-   h => #(= 11 (count %))))
+ (let [v (qrand :type :hex16 :length 11)]
+   v => (has every? hex16?)
+   v => #(= 11 (count %))))
 
 (fact 
- (let [h (qrand :type :hex16 :length 13 :blocks 2)]
-   h => (has every? hex32?)
-   h => #(= 13 (count %))))
+ (let [v (qrand :type :hex16 :length 13 :blocks 2)]
+   v => (has every? hex32?)
+   v => #(= 13 (count %))))
 
 (fact 
- (let [h (qrand :type :hex16 :blocks 1024)]
-   (apply seq h) => (has every? hex-char?)
-   (apply seq h) => #(= 2048 (count %))
-   h => #(= 1 (count %))))
+ (let [v (qrand :type :hex16 :blocks 1024)]
+   (apply seq v) => (has every? hex-char?)
+   (apply seq v) => #(= 2048 (count %))
+   v => #(= 1 (count %))))

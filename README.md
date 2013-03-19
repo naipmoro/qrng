@@ -1,10 +1,10 @@
 ## qrng
 
-Random number generation via the [ANU Quantum Random Numbers Server](http://qrng.anu.edu.au/index.php).  
+A clojure library to generate random numbers via the [ANU Quantum Random Numbers Server](http://qrng.anu.edu.au/index.php).  
 These are purportedly 'truly random' numbers, based on measuring the  
 quantum fluctuations of the vacuum.
 
-### Installation
+## Installation
 
 Available from [Clojars:](https://clojars.org/naipmoro/qrng)  
 
@@ -23,7 +23,7 @@ Available from [Clojars:](https://clojars.org/naipmoro/qrng)
 </dependency>
 ```
 
-### Usage
+## Usage
 
 **(qrand & opts)**
 
@@ -50,7 +50,7 @@ hope of increasing throughput. Unfortunately, actual experience
 shows no improvement. Perhaps the ANU server disallows persistent  
 connections -- or something else is going on.
 
-### Examples
+## Examples
 
 ```clj
 (require '[naipmoro.qrng.core :refer [qrand])

@@ -31,9 +31,9 @@ The **:length** option is the number of random numbers to be returned.
 The default is 1.
 
 You have 3 choices for option **:type**:  
- __:int8__   (an integer between 0-255; the default)  
-__:int16__   (an integer between 0-65535)  
-__:hex16__   (a hexadecimal string between 00-ff)  
+ __:int8__   (returns integers between 0-255; the default)  
+__:int16__   (returns integers between 0-65535)  
+__:hex16__   (returns hexadecimal strings between 00-ff)  
   
 The **:blocks** option is relevant only for type :hex16. It sets  
 the hexadecimal block size and must be a number between 1-1024.  

@@ -98,7 +98,7 @@ Connect to server using the https protocol:
 => ["d34d" "7b40" "8c35" "3693" "fb2c"]
 ```
 
-1024 bytes of random hexadecimals:  
+1024 bytes of random hexadecimals as one string:  
 
 ```clj
 (qrand  :type :hex16, :blocks 1024)  

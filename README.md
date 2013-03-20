@@ -1,7 +1,7 @@
 ## qrng
 
 A clojure interface to the [ANU Quantum Random Numbers Server](http://qrng.anu.edu.au/index.php).  
-The numbers generated are purportedly 'truly random,' based on  
+The numbers generated are purported to be 'truly random,' based on  
 measuring the quantum fluctuations of the vacuum.
 
 ## Installation
@@ -27,19 +27,19 @@ Available from [Clojars:](https://clojars.org/naipmoro/qrng)
 
 **(qrand & opts)**
 
-The **:length** option is the number of random numbers to be returned.  
-The default is 1.
+The **:length** keyword determines the number of random numbers to be  
+returned. The default is 1.
 
-You have 3 choices for option **:type**:  
+You have 3 choices for keyword **:type**:  
  __:int8__   (returns integers between 0-255; the default)  
 __:int16__   (returns integers between 0-65535)  
 __:hex16__   (returns hexadecimal strings between 00-ff)  
   
-The **:blocks** option is relevant only for type :hex16. It sets  
+The **:blocks** keyword is relevant only for type :hex16. It sets  
 the hexadecimal block size and must be a number between 1-1024.  
 The default is 1.
 
-If option **:https** is true, the connection will be established using  
+If keyword **:https** is true, the connection will be established using  
 the https protocol. Note, however, that presently the ANU server has  
 an untrusted SSL cert. The default is false (http is used).
 

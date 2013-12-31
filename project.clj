@@ -1,4 +1,4 @@
-(defproject naipmoro/qrng "0.4.0"
+(defproject naipmoro/qrng "0.5.0"
   :description "A clojure interface to the ANU Quantum Random Numbers Server"
   :url "https://github.com/naipmoro/qrng"
   :license {:name "Eclipse Public License"

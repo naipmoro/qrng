@@ -4,6 +4,8 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"
             :distribution :repo} 
+  :scm {:name "git"
+         :url "https://github.com/naipmoro/qrng"}
   :dependencies [[org.clojure/clojure "1.5.1"]
                  [clj-http "0.6.5"]]
   :profiles {:dev {:dependencies [[criterium "0.3.1"]

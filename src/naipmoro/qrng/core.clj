@@ -25,8 +25,7 @@
    is 1.
 
    If keyword ':https' is true, the connection will be established using
-   the https protocol. Note, however, that presently the ANU server has
-   an untrusted SSL cert. The default is false (http is used).
+   the https protocol. The default is false (http is used).
 
    If the requested vector is larger than the server's maximum (1024),
    repeated requests need to be made. A connection pool is used in the

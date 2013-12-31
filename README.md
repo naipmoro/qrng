@@ -40,8 +40,7 @@ the hexadecimal block size and must be a number between 1-1024.
 The default is 1.
 
 If keyword **:https** is true, the connection will be established using  
-the https protocol. Note, however, that presently the ANU server has  
-an untrusted SSL cert. The default is false (http is used).
+the https protocol. The default is false (http is used).
 
 NOTE:  
 If the requested vector is larger than the server's maximum (1024),  
@@ -53,7 +52,7 @@ connections -- or something else is going on.
 ## Examples
 
 ```clj
-(require '[naipmoro.qrng.core :refer [qrand])
+(require '[naipmoro.qrng.core :refer [qrand]])
 ```
 
 One random integer between 0-255:  

@@ -11,18 +11,8 @@ Available from [Clojars:](https://clojars.org/naipmoro/qrng)
 **Leiningen**  
 
 ```clj
-[naipmoro/qrng "0.5.0"]
+[naipmoro/qrng "0.5.1"]
 ```
-**Maven**  
-
-```xml
-<dependency>
-  <groupId>naipmoro</groupId>
-  <artifactId>qrng</artifactId>
-  <version>0.5.0</version>
-</dependency>
-```
-
 ## Usage
 
 **(qrand & opts)**
@@ -39,15 +29,12 @@ The **:blocks** keyword is relevant only for type :hex16. It sets
 the hexadecimal block size and must be a number between 1-1024.  
 The default is 1.
 
-If keyword **:https** is true, the connection will be established using  
-the https protocol. The default is false (http is used).
+If keyword **:https** is false, the connection will be established using  
+the http protocol. The default is true (https is used).
 
 NOTE:  
-If the requested vector is larger than the server's maximum (1024),  
-repeated requests need to be made. A connection pool is used in the  
-hope of increasing throughput. Unfortunately, actual experience  
-shows no improvement. Perhaps the ANU server disallows persistent  
-connections -- or something else is going on.
+If the requested vector is larger than the server's maximum (1024),
+a connection pool is used to concat multiple requests.
 
 ## Examples
 
@@ -90,13 +77,6 @@ One random integer between 0-255:
 => ["07cb" "fcc6" "411b" "2780" "3a99"]
 ```
 
-Connect to server using the https protocol:  
-
-```clj
-(qrand :length 5, :type :hex16, :blocks 2, :https true)  
-=> ["d34d" "7b40" "8c35" "3693" "fb2c"]
-```
-
 1024 bytes of random hexadecimals as one string:  
 
 ```clj
@@ -124,4 +104,4 @@ to their random number generator.
 
 ### License
 
-Distributed under the Eclipse Public License, the same as Clojure.
+Distributed under the MIT License.

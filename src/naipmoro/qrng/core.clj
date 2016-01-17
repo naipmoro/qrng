@@ -2,7 +2,7 @@
   (:require [clj-http.client :as http]
             [cheshire.core :as cheshire]))
 
-(def anu-domain "qrng.anu.edu.au/API/jsonI.php")
+(def anu-url "https://qrng.anu.edu.au/API/jsonI.php")
 (def ^:const maxlen 1024) ; determined by the ANU server
 (def types {:int8 "uint8", :int16 "uint16", :hex16 "hex16"})
 
@@ -28,41 +28,35 @@
    hexadecimal block size and must be a number between 1-1024. The default
    is 1.
 
-   If keyword ':https' is false, the connection will be established using
-   the http protocol. The default is true (https is used).
-
-   If the requested vector is larger than the server's maximum (1024),
+   Note: If the requested vector is larger than the server's maximum (1024),
    a connection pool is used to concat multiple requests."
   
-  [& {:keys [type length blocks https]
+  [& {:keys [type length blocks]
       :or {type   :int8     ; 
            length 1         ; the defaults
-           blocks 1         ; 
-           https  true}}]   ;
+           blocks 1   }}]   ;
   {:pre [(pos? length)                        ; length > 0
          (and (> blocks 0) (< blocks 1025))]} ; 0 < blocks <= 1024
-  (let [protocol (if https "https" "http")
-        url (str protocol "://" anu-domain)
-        base-query {"type" (type types) "size" blocks}]
+  (let [base-query {"type" (type types) "size" blocks}]
     (if (> length maxlen)
       (let [[q r] (quot-rem length maxlen), v (atom [])]
         (http/with-connection-pool
           (dotimes [_ q]
             (->> {:query-params (assoc base-query "length" maxlen)}
-                 (http/get url)
+                 (http/get anu-url)
                  :body
                  parse-data
                  (swap! v concat)))
           (when (> r 0)
             (->> {:query-params (assoc base-query "length" r)}
-                 (http/get url)
+                 (http/get anu-url)
                  :body
                  parse-data
                  (swap! v concat)))
           (vec (deref v))))
-       ; else if length <= maxlen
+                                        ; else if length <= maxlen
       (->> {:query-params (assoc base-query "length" length)}
-             (http/get url)
-             :body
-             parse-data))))
+           (http/get anu-url)
+           :body
+           parse-data))))
 
